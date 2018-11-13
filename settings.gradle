@@ -1,0 +1,6 @@
+/*
+ * Copyright (c) 2018. Uwe Post <autor@uwepost.de>. All rights reserved. See licence.txt file for actual license.
+ *
+ */
+
+include ':app'

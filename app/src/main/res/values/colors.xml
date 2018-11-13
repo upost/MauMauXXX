@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. Uwe Post <autor@uwepost.de>. All rights reserved. See licence.txt file for actual license.
+  ~
+  -->
+
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="lblue">#aaaaff</color>
+    <color name="llblue">#eeeeff</color>
+    <color name="lred">#ffaaaa</color>
+    <color name="white">#eeeeee</color>
+    <color name="lgreen">#aaffaa</color>
+    <color name="transparent">#ffffffff</color>
+    <color name="red">#dd3333</color>
+</resources>

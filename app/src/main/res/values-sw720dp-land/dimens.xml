@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. Uwe Post <autor@uwepost.de>. All rights reserved. See licence.txt file for actual license.
+  ~
+  -->
+
+<resources>
+    <dimen name="pile_width">180dp</dimen>
+    <dimen name="pile_height">240dp</dimen>
+    <dimen name="pile_margin">220dp</dimen>
+
+    <dimen name="bubble_width">400dp</dimen>
+    <dimen name="bubble_height">200dp</dimen>
+    <dimen name="bubble_text_width">300dp</dimen>
+    <dimen name="bubble_text_height">120dp</dimen>
+    <dimen name="bubble_text_marginTop">40dp</dimen>
+    <dimen name="medium_text_size">24sp</dimen>
+    <dimen name="small_text_size">20sp</dimen>
+    <dimen name="large_text_size">60sp</dimen>
+    <dimen name="popup_width">650dp</dimen>
+    <dimen name="bubble_chooser_marginTop">100dp</dimen>
+</resources>

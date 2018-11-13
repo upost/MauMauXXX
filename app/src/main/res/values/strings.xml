@@ -1,0 +1,95 @@
+<!--
+  ~ Copyright (c) 2018. Uwe Post <autor@uwepost.de>. All rights reserved. See licence.txt file for actual license.
+  ~
+  -->
+
+<resources>
+    <string name="app_name">MauMau\nXXX</string>
+    <string name="your_turn">Du bist dran!</string>
+    <string name="my_turn">Ich bin dran...</string>
+    <string name="cards_info">Lisa: %d Karten</string>
+    <string name="you_win">Du gewinnst</string>
+    <string name="i_win">Ich gewinne</string>
+    <string name="i_draw">Ich muss ziehen</string>
+    <string name="i_play">Ich lege</string>
+    <string name="last_card">Letzte Karte!</string>
+    <string name="greeting">Auf ein faires Spiel!</string>
+    <string name="i_wish">Ich wünsche mir %s</string>
+
+    <string name="undress_user_1">Los, Oberteil ausziehen!</string>
+    <string name="undress_user_2">Weg mit deiner Hose!</string>
+    <string name="undress_user_3">Socken aus! Bist fast nackt!</string>
+    <string name="undress_user_4">Du bist nackt! Game Over</string>
+
+    <string name="undress_lisa_1">Mist, meine Jacke ...</string>
+    <string name="undress_lisa_2">Mein schönes Kleid!</string>
+    <string name="undress_lisa_3">Schuhe sind eh blöd ...</string>
+    <string name="undress_lisa_4">Raus aus der Strumpfhose...</string>
+    <string name="undress_lisa_5">Oh ... mein BH ...</string>
+    <string name="undress_lisa_6">Mehr hab ich nicht ;-)</string>
+    <string name="wish_color">Wähle eine Farbe:</string>
+    <string name="uebrigens">PS</string>
+    <string name="uebrigens_info">Übrigens ... hat Google die Veröffentlichung dieser App abgelehnt, daher ist sie nicht auf Google Play verfügbar.
+        Zwar gibt es eine entsprechende Altersfreigabe-Einstufung (FSK 12, PEGI 16, ESRB M), so dass Minderjährige nicht damit in Berührung kommen würden.
+        Trotzdem: Mit Verweis auf das Verbot "sexuell anzüglicher Posen" in den Inhaltsrichtlinien wurde die App gesperrt.
+        Lisa meint: "Blut, Gewalt, Betrug, Schrott: alles erlaubt, meine nackte Haut aber nicht? Gut, dass ich nicht in eurer Welt lebe."</string>
+    <string name="i_pass">Ich kann nicht</string>
+
+    <string-array name="curses">
+        <item>Mistkerl.</item>
+        <item>Zu freundlich.</item>
+        <item>Na toll.</item>
+        <item>Vielen Dank auch.</item>
+        <item>War ja klar.</item>
+        <item>Das ist nicht nett.</item>
+        <item>Ich hasse dieses Spiel.</item>
+        <item>Macht dir das Spaß?</item>
+        <item>Ist das dein Ernst?</item>
+        <item>Du schummelst doch.</item>
+        <item>War die in deinem Ärmel?</item>
+        <item>Na warte.</item>
+        <item>Auch das noch.</item>
+        <item>Unverschämtheit!</item>
+        <item>Das wirst du bereuen.</item>
+        <item>Ja ja, schon gut.</item>
+        <item>Ich wäre lieber woanders.</item>
+        <item>Lieber was anderes spielen?</item>
+        <item>Das wirst du noch bedauern.</item>
+        <item>Nicht schon wieder.</item>
+        <item>Grins nicht so.</item>
+        <item>Darüber reden wir noch.</item>
+        <item>Ein echter Gentleman.</item>
+        <item>OK, heute kein Sex.</item>
+        <item>Seufz.</item>
+        <item>Langsam werde ich sauer.</item>
+        <item>Ich hasse meinen Programmierer.</item>
+        <item>Das wird dir nicht helfen.</item>
+        <item>Hallo, geht\'s noch?</item>
+        <item>Guck nicht so.</item>
+        <item>Gähn ...</item>
+        <item>Reizend.</item>
+        <item>Na Klasse.</item>
+        <item>Sonst noch was?</item>
+    </string-array>
+    <string-array name="happy">
+        <item>He he.</item>
+        <item>So macht es mir Spaß.</item>
+        <item>Was sagste dazu?</item>
+        <item>Du hast es so gewollt.</item>
+        <item>Grins.</item>
+        <item>La la la ...</item>
+        <item>Küss mich, Schatz!</item>
+        <item>Nimm dies!</item>
+        <item>Hach ja.</item>
+        <item>Oh wie praktisch.</item>
+        <item>Ich liebe dieses Spiel.</item>
+        <item>Deine Niederlage steht bevor.</item>
+        <item>Hust.</item>
+        <item>Glück muss man haben.</item>
+        <item>Pech im Spiel, ...</item>
+        <item>Cool!</item>
+        <item>So sehen Sieger aus!</item>
+        <item>So muss das sein.</item>
+    </string-array>
+
+</resources>

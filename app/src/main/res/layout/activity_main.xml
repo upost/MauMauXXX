@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. Uwe Post <autor@uwepost.de>. All rights reserved. See licence.txt file for actual license.
+  ~
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    tools:context=".MainActivity"
+    android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="AUX Soft präsentiert"
+            android:textColor="@color/lblue"
+            android:layout_gravity="center"
+            android:textSize="@dimen/small_text_size"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="@string/app_name"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/lred"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="DRÜCKE START"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/lgreen"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copyright © 1983"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_text_size"
+            android:layout_gravity="center_horizontal|bottom"
+            />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/book"
+        android:layout_width="140dp"
+        android:layout_height="200dp"
+        android:layout_marginRight="-120dp"
+        android:src="@mipmap/book_cover"
+        android:layout_gravity="right|top"
+        android:rotation="-10"/>
+    <TextView
+        android:id="@+id/by_the_way"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/uebrigens"
+        android:textSize="@dimen/large_text_size"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom|right" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:orientation="vertical"
+        android:layout_gravity="center"
+        android:id="@+id/popup"
+        android:visibility="gone"
+        android:background="@color/lblue">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/close_popup"
+                android:layout_width="@dimen/popup_width"
+                android:layout_height="wrap_content"
+                android:text="@string/uebrigens_info"
+                android:textColor="@color/llblue"
+                android:textSize="@dimen/medium_text_size"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

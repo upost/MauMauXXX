@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018. Uwe Post <autor@uwepost.de>. All rights reserved. See licence.txt file for actual license.
+  ~
+  -->
+
+<rotate xmlns:android="http://schemas.android.com/apk/res/android" android:shareInterpolator="false"
+
+          android:interpolator="@android:anim/overshoot_interpolator"
+          android:pivotX="0%"
+          android:pivotY="100%"
+          android:fromDegrees="-10"
+          android:toDegrees="-50"
+          android:duration="500"
+        android:repeatMode="reverse"
+        android:repeatCount="1"
+
+    />
