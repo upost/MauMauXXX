@@ -6,6 +6,7 @@
 package de.uwepost.maumauxxx;
 
 import android.content.ClipData;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -47,6 +48,7 @@ public class GameActivity extends BaseGameActivity {
     private boolean showCurse;
     private boolean continueGame;
     private boolean showHappyComment;
+    private View draggingView;
 
 
     @Override
@@ -225,7 +227,7 @@ public class GameActivity extends BaseGameActivity {
     }
 
     private void updateLisa() {
-        int id = getResources().getIdentifier("lisa"+ (1 + player_won),"mipmap",getClass().getPackage().getName());
+        int id = getResources().getIdentifier("lisa"+ (1 + player_won),"mipmap",BuildConfig.APPLICATION_ID);
         ((ImageView)findViewById(R.id.lisa)).setImageResource(id);
     }
 
@@ -274,8 +276,9 @@ public class GameActivity extends BaseGameActivity {
     }
 
     private boolean onDragListener(View droppedOnView, DragEvent event) {
-        if(event.getLocalState()!=null) {
-            View draggingView = (View) event.getLocalState();
+
+
+        if(draggingView!=null) {
 
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
@@ -300,7 +303,9 @@ public class GameActivity extends BaseGameActivity {
                     return true;
 
                 case DragEvent.ACTION_DROP:
+                    Log.d(TAG, "action_drop");
                     if( droppedOnView.getId()==R.id.pile) {
+                        Log.d(TAG, "dropped on pile");
                         MauMau.Card card = (MauMau.Card) draggingView.getTag(R.id.TAG_CARD);
                         if(maumau.canPlayCard(card)) {
                             playCard(PLAYER,card);
@@ -308,6 +313,12 @@ public class GameActivity extends BaseGameActivity {
                             handler.post(this::lisaSaysNo);
                         }
                     }  else {
+                        if(draggingView.getId()==R.id.deck && (droppedOnView==root||droppedOnView==findViewById(R.id.lisa))) {
+                            // drawn from deck
+                            playerDrawsCard();
+                        }
+
+
                         // not played, return card to hand
                         if(draggingView!=null)
                             handler.post(()->{draggingView.setVisibility(View.VISIBLE);});
@@ -317,15 +328,16 @@ public class GameActivity extends BaseGameActivity {
                     return true;
 
                 case DragEvent.ACTION_DRAG_ENDED:
-                    if(draggingView!=null) {
-                        if(draggingView.getId()==R.id.deck && droppedOnView==root) {
-                            // drawn from deck
-                            playerDrawsCard();
-                        }
-                        handler.post(() -> {
-                            draggingView.setVisibility(View.VISIBLE);
-                        });
-                    }
+//                    Log.d(TAG, "drag_ended");
+//                    if(draggingView!=null) {
+//                        if(draggingView.getId()==R.id.deck && (droppedOnView==root||droppedOnView==findViewById(R.id.lisa))) {
+//                            // drawn from deck
+//                            playerDrawsCard();
+//                        }
+//                        handler.post(() -> {
+//                            draggingView.setVisibility(View.VISIBLE);
+//                        });
+//                    }
 
 
                     return true;
@@ -403,14 +415,14 @@ public class GameActivity extends BaseGameActivity {
                 updateLisa();
             }
             // Lisa's text has to be delayed because we posted an updateUI above
-            handler.post(()->{showBubbleText(getString(getResources().getIdentifier("undress_lisa_"+player_won,"string",getPackageName())));});
+            handler.post(()->{showBubbleText(getString(getResources().getIdentifier("undress_lisa_"+player_won,"string",BuildConfig.APPLICATION_ID)));});
             handler.post(this::updatePlayerCards);
             return;
         }
         if(maumau.hasWon(LISA)) {
             Log.d(TAG,"Lisa wins");
             lisa_won++;
-            showBubbleText(getString(getResources().getIdentifier("undress_user_"+lisa_won,"string",getPackageName())));
+            showBubbleText(getString(getResources().getIdentifier("undress_user_"+lisa_won,"string",BuildConfig.APPLICATION_ID)));
             handler.removeCallbacks(null);
             if(lisa_won< PLAYER_CLOTHES) {
                 handler.postDelayed(this::startNewRound, NEXT_ROUND_DELAY_MS);
@@ -490,7 +502,13 @@ public class GameActivity extends BaseGameActivity {
         if(card !=null) {
             view.setVisibility(View.INVISIBLE);
             ClipData data = ClipData.newPlainText("card", card.name());
-            view.startDrag(data, new View.DragShadowBuilder(view), view, 0);
+            draggingView=view;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                view.startDragAndDrop(data, new View.DragShadowBuilder(view), view, 0);
+            } else {
+                view.startDrag(data, new View.DragShadowBuilder(view), view, 0);
+            }
+
             return true;
 
         }
@@ -502,8 +520,12 @@ public class GameActivity extends BaseGameActivity {
         if(motionEvent.getAction()==MotionEvent.ACTION_DOWN) {
             findViewById(R.id.deck).setOnTouchListener(null);
             ClipData data = ClipData.newPlainText("card", "deck");
-
-            view.startDrag(data, new View.DragShadowBuilder(view), view, 0);
+            draggingView=findViewById(R.id.deck);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                view.startDragAndDrop(data, new View.DragShadowBuilder(view), view, 0);
+            } else   {
+                view.startDrag(data, new View.DragShadowBuilder(view), view, 0);
+            }
             return true;
         }
         return false;
@@ -511,7 +533,7 @@ public class GameActivity extends BaseGameActivity {
 
 
     private void fillCardFace(ImageView imageView, MauMau.Card card) {
-        int id = getResources().getIdentifier("card_"+card.name(),"mipmap",getClass().getPackage().getName());
+        int id = getResources().getIdentifier("card_"+card.name(),"mipmap",BuildConfig.APPLICATION_ID);
         imageView.setImageResource(id);
     }
 

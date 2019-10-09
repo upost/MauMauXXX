@@ -8,11 +8,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "de.uwepost.maumauxxx"
+        applicationId "de.upcenter.maumauxxx"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 14
-        versionName "1.4"
+        versionCode 15
+        versionName "1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
