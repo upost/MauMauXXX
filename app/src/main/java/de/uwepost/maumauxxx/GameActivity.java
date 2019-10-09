@@ -277,12 +277,6 @@ public class GameActivity extends BaseGameActivity {
         if(event.getLocalState()!=null) {
             View draggingView = (View) event.getLocalState();
 
-            if(draggingView!=null && draggingView.getId()==R.id.deck && event.getAction()==DragEvent.ACTION_DRAG_ENDED) {
-                // drawn and dropped
-                playerDrawsCard();
-                return true;
-            }
-
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
                     return true;
@@ -310,8 +304,10 @@ public class GameActivity extends BaseGameActivity {
                         MauMau.Card card = (MauMau.Card) draggingView.getTag(R.id.TAG_CARD);
                         if(maumau.canPlayCard(card)) {
                             playCard(PLAYER,card);
+                        } else {
+                            handler.post(this::lisaSaysNo);
                         }
-                    } else {
+                    }  else {
                         // not played, return card to hand
                         if(draggingView!=null)
                             handler.post(()->{draggingView.setVisibility(View.VISIBLE);});
@@ -321,9 +317,17 @@ public class GameActivity extends BaseGameActivity {
                     return true;
 
                 case DragEvent.ACTION_DRAG_ENDED:
-                    // not played, return card to hand
-                    if(draggingView!=null)
-                        handler.post(()->{draggingView.setVisibility(View.VISIBLE);});
+                    if(draggingView!=null) {
+                        if(draggingView.getId()==R.id.deck && droppedOnView==root) {
+                            // drawn from deck
+                            playerDrawsCard();
+                        }
+                        handler.post(() -> {
+                            draggingView.setVisibility(View.VISIBLE);
+                        });
+                    }
+
+
                     return true;
 
                 default:
@@ -334,13 +338,18 @@ public class GameActivity extends BaseGameActivity {
         return true;
     }
 
+    private void lisaSaysNo() {
+        String[] comment = getResources().getStringArray(R.array.card_not_allowed);
+        showBubbleText(comment[rnd.nextInt(comment.length)]);
+    }
+
     private void playerDrawsCard() {
         MauMau.Card card = maumau.drawCard(PLAYER);
         Log.d(TAG,"player draws " + card);
-        if(maumau.canPlayCard(card)) {
+        drewThisTurn=true;
+        if(maumau.canPlayAnyCard(PLAYER)) {
             // player may play card but NOT draw again
-            Log.d(TAG,"player can play drawn card...");
-            drewThisTurn=true;
+            Log.d(TAG,"player can play (drawn) card...");
             handler.post(this::updateUI);
         } else {
             // player cannot play, pass to lisa
@@ -375,6 +384,7 @@ public class GameActivity extends BaseGameActivity {
                 // Lisa may choose
                 MauMauBot bot = new MauMauBot(LISA);
                 maumau.setWishedColor(bot.wishColor(maumau));
+                drewThisTurn=false;
                 handler.post(this::updateUI);
                 handler.postDelayed(()->{showBubbleText(getString(R.string.i_wish, WordUtils.capitalizeFully(maumau.getWishedColor())));},LISA_PLAY_DELAY_MS/2);
             }

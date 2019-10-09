@@ -96,6 +96,13 @@ public class MauMau implements Serializable {
         return (isBube(card) || sameColor(card,topOnPile) || sameValue(card,topOnPile) );
     }
 
+    public boolean canPlayAnyCard(String player) {
+        for(Card c  : getHand(player)) {
+            if(canPlayCard(c)) return true;
+        }
+        return false;
+    }
+
     public SpecialEvent playCard(String player, Card card) {
         if(canPlayCard(card)) {
             wishedColor=null;

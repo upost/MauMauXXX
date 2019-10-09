@@ -34,6 +34,17 @@
         Trotzdem: Mit Verweis auf das Verbot "sexuell anzüglicher Posen" in den Inhaltsrichtlinien wurde die App gesperrt.
         Lisa meint: "Blut, Gewalt, Betrug, Schrott: alles erlaubt, meine nackte Haut aber nicht? Gut, dass ich nicht in eurer Welt lebe."</string>
     <string name="i_pass">Ich kann nicht</string>
+<string-array name="card_not_allowed">
+    <item>Versuchst du zu schummeln?</item>
+    <item>Nee, die passt nicht.</item>
+    <item>Nix da!</item>
+    <item>Glaubst du, ich merk das nicht?</item>
+    <item>Du kennst doch die Regeln!</item>
+    <item>Testest du mich?</item>
+    <item>Vergriffen?</item>
+    <item>Der Atari sagt: Unerlaubter Zug.</item>
+    <item>Leg mich nicht rein!</item>
+</string-array>
 
     <string-array name="curses">
         <item>Mistkerl.</item>

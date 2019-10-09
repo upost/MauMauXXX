@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 public class MainActivity extends BaseGameActivity {
 
@@ -26,6 +27,8 @@ public class MainActivity extends BaseGameActivity {
         findViewById(R.id.book).setOnClickListener(this::showBook);
         findViewById(R.id.close_popup).setOnClickListener(this::closePopup);
         findViewById(R.id.by_the_way).setOnClickListener(this::showPopup);
+        TextView tv = findViewById(R.id.copyright);
+        tv.setText("v"+BuildConfig.VERSION_NAME+" - Copyright © 1983");
     }
 
     private void closePopup(View view) {
